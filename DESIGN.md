@@ -5,7 +5,8 @@
   clear form labels and restrained green/orange accents; do not copy brand assets.
 - User explicitly requested a simple site and lead-owned design. No generated hero
   artwork, animation library, marketing sections, or UI framework.
-- Layout: document scroll, one readable form column, compact recruitment context.
+- Layout: independently scrolling desktop form, document scrolling on mobile,
+  compact recruitment context.
 - Verification: real browser state captures at 375, 768 and 1280 pixels.
 
 ## 1. Atmosphere & Identity
@@ -30,13 +31,14 @@ The form, rather than decorative content, is the main event.
 ## 4. Spacing & Layout
 - Spacing: 4, 8, 12, 16, 24, 32, 48, 64px.
 - Maximum width 1000px; 16px mobile gutters, 32px desktop gutters.
-- Desktop: introduction 360px + flexible form. Below 800px: one column.
-- Form pairs collapse below 520px. Document owns scrolling; no fixed overlays.
+- Desktop: introduction 360px + flexible form; the application panel owns vertical
+  scrolling within the viewport. Below 800px: one column and document scrolling.
+- Form pairs collapse below 520px. No fixed overlays.
 - Input/button minimum height 48px. Corners 6px inputs, 12px panels.
 
 ## 5. Components
-- Wordmark/header: text logo, application-cycle caption.
-- Context block: heading, recruitment metadata, expandable activity details.
+- Wordmark/header: text logo.
+- Context block: recruitment metadata, expandable activity details.
 - Panel: paper surface, 1px border, 32px padding (24px on mobile).
 - Field: visible label, associated hint, input/textarea. Required marker spelled out
   in section introduction; optional fields explicitly labeled.

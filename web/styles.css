@@ -19,13 +19,11 @@ button, summary, input[type="radio"], input[type="checkbox"] { cursor: pointer; 
 .brand { text-decoration: none; font-size: var(--section); font-weight: 750; letter-spacing: -0.04em; }
 .brand span { color: var(--orange); }
 .brand small { color: var(--muted); font-size: var(--small); font-weight: 500; letter-spacing: 0; }
-.cycle, .eyebrow, .panel-top { font-size: var(--small); }
-.cycle { font-family: ui-monospace, monospace; color: var(--muted); }
+.eyebrow, .panel-top { font-size: var(--small); }
 .layout { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: var(--s12); align-items: start; padding: var(--s16) 0; }
 .eyebrow { font-weight: 650; color: var(--green); margin: 0 0 var(--s6); }
 .intro > .eyebrow::before { content: ""; display: inline-block; width: var(--s6); height: 3px; background: var(--orange); margin: 0 var(--s3) var(--s1) 0; }
-h1, h2, h3 { line-height: 1.25; letter-spacing: -0.035em; margin: 0; }
-h1 { font-size: clamp(28px, 3.4vw, 40px); }
+h2, h3 { line-height: 1.25; letter-spacing: -0.035em; margin: 0; }
 h2 { font-size: var(--title); margin-bottom: var(--s4); }
 h3 { font-size: var(--section); }
 p { margin: var(--s4) 0; }
@@ -37,7 +35,7 @@ dt { color: var(--muted); } dd { margin: 0; font-weight: 600; }
 summary { color: var(--green); padding: var(--s3) 0; font-weight: 600; }
 .details-content, .contact { font-size: var(--small); }
 .contact { margin-top: var(--s6); } .contact a { white-space: nowrap; margin-left: var(--s2); }
-.panel { background: var(--paper); border: 1px solid var(--border); border-radius: var(--panel-radius); padding: var(--s8); min-width: 0; }
+.panel { background: var(--paper); border: 1px solid var(--border); border-radius: var(--panel-radius); padding: var(--s8); min-width: 0; max-block-size: calc(100dvh - 160px); overflow-y: auto; }
 .panel-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s2); color: var(--muted); margin-bottom: var(--s8); }
 .panel-top .eyebrow { margin: 0; letter-spacing: 0.06em; }
 form { margin-top: var(--s8); }
@@ -82,16 +80,14 @@ input[type="radio"], input[type="checkbox"] { width: 20px; height: 20px; accent-
 dialog { max-width: min(440px, calc(100% - 32px)); padding: var(--s8); color: var(--ink); background: var(--paper); border: 1px solid var(--border); border-radius: var(--panel-radius); }
 dialog::backdrop { background: #242d2780; }
 .dialog-actions { display: flex; justify-content: flex-end; gap: var(--s3); margin-top: var(--s6); }
-footer { display: flex; justify-content: space-between; gap: var(--s4); padding: var(--s6) 0; border-top: 1px solid var(--border); font-size: var(--small); color: var(--muted); }
 @media (max-width: 800px) {
   .layout { grid-template-columns: minmax(0, 1fr); gap: var(--s8); padding: var(--s8) 0; }
   .intro { max-width: 600px; } .facts { margin: var(--s6) 0; }
-  .intro h1 br { display: none; }
+  .panel { max-block-size: none; overflow: visible; }
 }
 @media (max-width: 520px) {
   .page { padding-inline: var(--s4); } .header { padding-block: var(--s6); }
-  .cycle { display: none; } .panel { padding: var(--s6); }
+  .panel { padding: var(--s6); }
   .pair { grid-template-columns: minmax(0, 1fr); gap: 0; }
   h2 { font-size: 24px; } .panel-top { gap: var(--s2); }
-  footer { flex-direction: column; gap: var(--s1); }
 }
