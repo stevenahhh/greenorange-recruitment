@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.omo/
+.DS_Store
+.clasp.json
+.env
+evidence/

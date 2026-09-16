@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GreenOrange Lab 학부 2·3학년 AI 공동연구 팀원 모집 및 지원서 작성">
+  <title>AI 공동연구 지원 | GreenOrange Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <a class="brand" href="./" aria-label="GreenOrange Lab 첫 화면">Green<span>Orange</span> <small>Lab</small></a>
+      <span class="cycle">2026 · FALL RESEARCH</span>
+    </header>
+    <main class="layout">
+      <aside class="intro" aria-labelledby="recruitment-title">
+        <p class="eyebrow">학부 공동연구 · 팀원 모집</p>
+        <h1 id="recruitment-title">함께 배우고,<br>직접 연구합니다.</h1>
+        <p class="lead">그린오렌지 연구실과 함께하는<br>3개월의 AI 공동연구.</p>
+        <p>AI 연구에 관심이 있다면 지원해 주세요.<br>관련 경험이 없어도 괜찮습니다.</p>
+        <dl class="facts">
+          <div><dt>모집 대상</dt><dd>학부 2·3학년</dd></div>
+          <div><dt>구성 인원</dt><dd>3~5명 내외</dd></div>
+          <div><dt>모집 기간</dt><dd>9.16.(수) – 9.19.(토)</dd></div>
+        </dl>
+        <details>
+          <summary>연구는 이렇게 진행해요</summary>
+          <div class="details-content">
+            <p>팀 구성 후 관심 분야와 연구 가능성을 고려해 주제를 함께 정합니다.</p>
+            <p>선행연구 조사 → 구현·실험 → 결과 분석</p>
+            <p>약 3개월간 주 1회 정기 회의를 진행합니다. 회의 시간은 저녁·주말을 포함해 팀원들과 유연하게 협의합니다.</p>
+            <p>11월 중 제주도 또는 기타 지역에서 열리는 학회 참여를 계획하고 있습니다. 구체적인 일정과 장소는 추후 안내합니다.</p>
+            <p>연구에 필요한 장비 및 AI 서비스 등을 지원할 예정입니다.</p>
+          </div>
+        </details>
+        <p class="contact">문의 안순광 <a href="tel:01020007488">010-2000-7488</a></p>
+      </aside>
+      <section class="panel" aria-label="공동연구 지원서">
+        <div class="panel-top"><span class="eyebrow">APPLICATION</span><span id="step-label">01 / 학번 확인</span></div>
+        <p id="environment" class="notice" hidden></p>
+        <div id="feedback" class="notice" role="status" aria-live="polite" hidden></div>
+        <section id="lookup-step">
+          <h2>학번으로 시작하세요</h2>
+          <p class="muted">처음이라면 신청서를 작성하고,<br>이미 지원했다면 내용을 수정할 수 있어요.</p>
+          <form id="lookup-form">
+            <fieldset>
+              <label class="field" for="student-id">학번
+                <input id="student-id" name="studentId" inputmode="numeric" pattern="[0-9]{4,20}" minlength="4" maxlength="20" autocomplete="off" required aria-describedby="id-help">
+              </label>
+              <p id="id-help" class="hint">숫자만 입력해 주세요. 앞자리 0도 그대로 입력합니다.</p>
+              <button class="primary full" type="submit">다음으로</button>
+            </fieldset>
+          </form>
+          <p class="footnote">이미 제출한 신청서는 설정한 숫자 4자리 비밀번호로 확인·수정·삭제할 수 있습니다.</p>
+        </section>
+        <section id="auth-step" hidden>
+          <h2>다시 오셨네요</h2>
+          <p class="muted"><span class="current-id"></span> 학번의 신청서가 있습니다.</p>
+          <form id="auth-form">
+            <fieldset>
+              <label class="field" for="existing-pin">비밀번호
+                <input id="existing-pin" type="password" inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" autocomplete="off" required aria-describedby="pin-help">
+              </label>
+              <p class="hint" id="pin-help">신청할 때 설정한 숫자 4자리를 입력해 주세요.</p>
+              <button class="primary full" type="submit">신청서 확인</button>
+            </fieldset>
+          </form>
+          <button class="text-button restart" type="button">다른 학번으로 돌아가기</button>
+          <p class="footnote">비밀번호를 잊었다면 담당자에게 문의해 주세요.</p>
+        </section>
+        <section id="application-step" hidden>
+          <h2 id="application-title">지원서를 작성해 주세요</h2>
+          <p class="muted">학번 <strong class="current-id"></strong><br>선택 항목 외에는 모두 작성해 주세요.</p>
+          <form id="application-form">
+            <fieldset id="application-fields">
+              <div class="section-heading"><span>01</span><h3>기본 정보</h3></div>
+              <div class="pair">
+                <label class="field" for="name">이름<input id="name" name="name" maxlength="40" autocomplete="name" required></label>
+                <label class="field" for="department">학과(전공)<input id="department" name="department" maxlength="80" required></label>
+              </div>
+              <fieldset class="year-field">
+                <legend>학년</legend>
+                <div class="radio-row"><label><input type="radio" name="year" value="2" required> 2학년</label><label><input type="radio" name="year" value="3"> 3학년</label></div>
+              </fieldset>
+              <label class="field" for="phone">휴대전화 번호<input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="01[016789][- ]?[0-9]{3,4}[- ]?[0-9]{4}" maxlength="13" placeholder="010-0000-0000" required></label>
+              <div class="section-heading"><span>02</span><h3>관심과 경험</h3></div>
+              <label class="field" for="interests">관심 있는 연구 분야나 주제
+                <textarea id="interests" name="interests" rows="4" maxlength="2000" required aria-describedby="interest-help"></textarea>
+              </label>
+              <p class="hint" id="interest-help">아직 정하지 못했다면, 함께 찾아보고 싶다고 적어 주셔도 됩니다.</p>
+              <label class="field" for="experience">보유 기술과 관련 경험 <span class="optional">(선택)</span>
+                <textarea id="experience" name="experience" rows="4" maxlength="3000" aria-describedby="experience-help"></textarea>
+              </label>
+              <p class="hint" id="experience-help">사용해 본 도구, 수업, 개인 공부나 프로젝트를 자유롭게 적어 주세요. 연구 주제와 역할을 정하기 위한 참고 사항이며, 경험이 없어도 지원할 수 있습니다.</p>
+              <div id="new-pin-fields">
+                <div class="section-heading"><span>03</span><h3>신청서 관리</h3></div>
+                <div class="pair">
+                  <label class="field" for="new-pin">비밀번호<input id="new-pin" type="password" inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" autocomplete="new-password"></label>
+                  <label class="field" for="confirm-pin">비밀번호 확인<input id="confirm-pin" type="password" inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" autocomplete="new-password"></label>
+                </div>
+                <p class="hint">수정·삭제에 사용할 숫자 4자리입니다. 꼭 기억해 주세요.</p>
+              </div>
+              <div class="agreement">
+                <p>회의 시간은 저녁·주말을 포함해 팀원들과 유연하게 협의합니다.</p>
+                <label class="check-label"><input id="consent" name="consent" type="checkbox" required><span>약 3개월간 주 1회 정기 회의에 참여해야 하며, 11월 중 학회 참여가 예정되어 있음을 이해했습니다. 구체적인 학회 일정과 장소는 추후 안내받습니다.</span></label>
+              </div>
+              <p class="footnote">입력한 정보는 공동연구 모집 검토와 연락을 위해 담당자만 확인합니다. 신청서는 학번과 비밀번호로 직접 삭제할 수 있습니다.</p>
+              <button id="save-button" class="primary full" type="submit">신청서 제출</button>
+            </fieldset>
+          </form>
+          <div class="form-bottom"><button class="text-button restart" type="button">나가기</button><button id="delete-button" class="text-button danger" type="button" hidden>신청서 삭제</button></div>
+        </section>
+        <section id="success-step" hidden>
+          <p class="success-mark" aria-hidden="true">✓</p>
+          <h2 id="success-title">신청서를 저장했습니다</h2>
+          <p id="success-detail" class="muted">학번과 비밀번호로 다시 접속하면 신청서를 확인·수정·삭제할 수 있습니다.</p>
+          <button class="primary full restart" type="button">첫 화면으로</button>
+        </section>
+        <noscript><p class="notice">신청서를 작성하려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript>
+      </section>
+    </main>
+    <footer>GreenOrange Lab <span>함께 배우며 연구하는 사람들을 기다립니다.</span></footer>
+  </div>
+  <dialog id="delete-dialog" aria-labelledby="delete-title">
+    <h2 id="delete-title">신청서를 삭제할까요?</h2>
+    <p>삭제한 내용은 복구할 수 없습니다.<br>다시 참여하려면 새로 신청해야 합니다.</p>
+    <div class="dialog-actions"><button id="cancel-delete" class="secondary" type="button" autofocus>취소</button><button id="confirm-delete" class="primary destructive" type="button">삭제하기</button></div>
+  </dialog>
+  <script src="transport.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

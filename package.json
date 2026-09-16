@@ -1,0 +1,10 @@
+{
+  "name": "greenorange-recruitment",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "bun test",
+    "build": "bun scripts/build.mjs",
+    "qa": "bun scripts/qa.mjs"
+  }
+}
