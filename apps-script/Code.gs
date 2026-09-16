@@ -190,10 +190,15 @@ function findRow_(sheet, id) {
   return -1;
 }
 
+var SHEET_NAME = "GreenOrange 지원서";
+
 function sheet_() {
   var props = PropertiesService.getScriptProperties();
   var spreadsheetId = props.getProperty("SPREADSHEET_ID");
-  if (!spreadsheetId) return { ok: false, res: err("SHEET_NOT_CONFIGURED", "저장소가 아직 연결되지 않았습니다. 담당자에게 문의해 주세요.") };
+  if (!spreadsheetId) {
+    spreadsheetId = SpreadsheetApp.create(SHEET_NAME).getId();
+    props.setProperty("SPREADSHEET_ID", spreadsheetId);
+  }
   var book = SpreadsheetApp.openById(spreadsheetId);
   var sheet = book.getSheets()[0];
   ensureHeader_(sheet);

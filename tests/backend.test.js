@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 
 function fakeServices() {
   const rows = [["studentId", "name", "department", "year", "phone", "interests", "experience", "consent", "pinSalt", "pinHash", "failCount", "lockUntil", "updatedAt"]];
-  const props = { SPREADSHEET_ID: "test-sheet", PIN_PEPPER: "test-pepper-do-not-use" };
+  const props = { PIN_PEPPER: "test-pepper-do-not-use" }; // SPREADSHEET_ID intentionally absent: every test covers auto-provision
   const sheet = {
     getDataRange() { return { getValues: () => rows.map(r => [...r]) }; },
     getRange(r, c, nr, nc) {
@@ -19,7 +19,10 @@ function fakeServices() {
     deleteRow(n) { rows.splice(n - 1, 1); },
   };
   const sandbox = {
-    SpreadsheetApp: { openById() { return { getSheets: () => [sheet] }; } },
+    SpreadsheetApp: {
+      openById() { return { getSheets: () => [sheet] }; },
+      create() { return { getId: () => "test-sheet" }; },
+    },
     PropertiesService: {
       getScriptProperties() {
         return {
@@ -44,7 +47,7 @@ function fakeServices() {
     Date,
   };
   runInNewContext(readFileSync("apps-script/Code.gs", "utf8"), sandbox);
-  return { backend: sandbox.dispatch, rows };
+  return { backend: sandbox.dispatch, rows, props };
 }
 
 let backend;
@@ -107,6 +110,13 @@ describe("모집 백엔드", () => {
     backend({ action: "create", studentId: "00123456", pin: "0042", data: data() });
     expect(backend({ action: "delete", studentId: "00123456", pin: "0042" })).toEqual({ ok: true, deleted: true });
     expect(backend({ action: "lookup", studentId: "00123456" })).toEqual({ ok: true, exists: false });
+  });
+
+  test("SPREADSHEET_ID가 없으면 시트를 자동 생성하고 저장", () => {
+    const fresh = fakeServices();
+    expect(fresh.props.SPREADSHEET_ID).toBeUndefined();
+    expect(fresh.backend({ action: "lookup", studentId: "00123456" })).toEqual({ ok: true, exists: false });
+    expect(fresh.props.SPREADSHEET_ID).toBe("test-sheet");
   });
 
   test("수식 주입 방지와 동의·형식 검증", () => {
