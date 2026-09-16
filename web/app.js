@@ -1,6 +1,7 @@
 function __greenorange_init() {
   const byId = (id) => document.getElementById(id);
-  byId("boot-note").hidden = true;
+  const bootNote = byId("boot-note");
+  if (bootNote) bootNote.hidden = true;
   let studentId = "";
   let pin = "";
   let editing = false;

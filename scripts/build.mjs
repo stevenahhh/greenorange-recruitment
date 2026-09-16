@@ -5,7 +5,7 @@ const web = p => readFileSync(`web/${p}`, "utf8").replace(/<\/(script|style)>/g,
 const css = web("styles.css");
 const transport = web("transport.js");
 const app = web("app.js");
-const body = web("index.html")
+const body = readFileSync("web/index.html", "utf8")
   .replace(/[\s\S]*<body[^>]*>/, "")
   .replace(/<\/body>[\s\S]*/, "")
   .replace(/<script src="transport\.js"><\/script>\s*<script src="app\.js"><\/script>/, "");
