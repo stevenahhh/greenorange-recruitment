@@ -1,5 +1,6 @@
-(() => {
+function __greenorange_init() {
   const byId = (id) => document.getElementById(id);
+  byId("boot-note").hidden = true;
   let studentId = "";
   let pin = "";
   let editing = false;
@@ -143,4 +144,10 @@
     const result = await request({ action: "delete", studentId, pin });
     if (result) success(true);
   });
-})();
+}
+// Apps Script serves scripts before DOM is ready; never touch nodes earlier.
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", __greenorange_init);
+} else {
+  __greenorange_init();
+}

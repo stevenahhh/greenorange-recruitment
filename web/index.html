@@ -38,12 +38,13 @@
       </aside>
       <section class="panel" aria-label="공동연구 지원서">
         <div class="panel-top"><span class="eyebrow">APPLICATION</span><span id="step-label">01 / 학번 확인</span></div>
+        <p id="boot-note" class="notice">신청서를 불러오는 중입니다. 이 문구가 계속 보이면 새로고침해 주세요.</p>
         <p id="environment" class="notice" hidden></p>
         <div id="feedback" class="notice" role="status" aria-live="polite" hidden></div>
         <section id="lookup-step">
           <h2>학번으로 시작하세요</h2>
           <p class="muted">처음이라면 신청서를 작성하고,<br>이미 지원했다면 내용을 수정할 수 있어요.</p>
-          <form id="lookup-form">
+          <form id="lookup-form" onsubmit="return false">
             <fieldset>
               <label class="field" for="student-id">학번
                 <input id="student-id" name="studentId" inputmode="numeric" pattern="[0-9]{4,20}" minlength="4" maxlength="20" autocomplete="off" required aria-describedby="id-help">
@@ -57,7 +58,7 @@
         <section id="auth-step" hidden>
           <h2>다시 오셨네요</h2>
           <p class="muted"><span class="current-id"></span> 학번의 신청서가 있습니다.</p>
-          <form id="auth-form">
+          <form id="auth-form" onsubmit="return false">
             <fieldset>
               <label class="field" for="existing-pin">비밀번호
                 <input id="existing-pin" type="password" inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" autocomplete="off" required aria-describedby="pin-help">
@@ -72,7 +73,7 @@
         <section id="application-step" hidden>
           <h2 id="application-title">지원서를 작성해 주세요</h2>
           <p class="muted">학번 <strong class="current-id"></strong><br>선택 항목 외에는 모두 작성해 주세요.</p>
-          <form id="application-form">
+          <form id="application-form" onsubmit="return false">
             <fieldset id="application-fields">
               <div class="section-heading"><span>01</span><h3>기본 정보</h3></div>
               <div class="pair">
