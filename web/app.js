@@ -16,11 +16,10 @@ function __greenorange_init() {
     feedback.hidden = !text;
   }
 
-  function show(step, label, focus) {
+  function show(step, focus) {
     for (const name of ["lookup", "auth", "application", "success"]) {
       byId(`${name}-step`).hidden = name !== step;
     }
-    byId("step-label").textContent = label;
     document.querySelectorAll(".current-id").forEach(el => { el.textContent = studentId; });
     if (focus) byId(focus).focus();
   }
@@ -33,7 +32,6 @@ function __greenorange_init() {
     const buttons = [...document.querySelectorAll("button")];
     fieldsets.forEach(el => { el.disabled = true; });
     buttons.forEach(el => { el.disabled = true; });
-    byId("step-label").setAttribute("aria-busy", "true");
     try {
       const result = await window.recruitmentApi(payload);
       if (!result.ok) {
@@ -48,7 +46,6 @@ function __greenorange_init() {
       busy = false;
       fieldsets.forEach(el => { el.disabled = false; });
       buttons.forEach(el => { el.disabled = false; });
-      byId("step-label").removeAttribute("aria-busy");
     }
   }
 
@@ -57,7 +54,7 @@ function __greenorange_init() {
     document.querySelectorAll("form").forEach(el => el.reset());
     byId("confirm-pin").setCustomValidity("");
     message("");
-    show("lookup", "01 / 학번 확인", "student-id");
+    show("lookup", "student-id");
   }
 
   function application(data) {
@@ -76,7 +73,7 @@ function __greenorange_init() {
     byId("delete-button").hidden = !editing;
     byId("application-title").textContent = editing ? "신청서를 수정하세요" : "지원서를 작성해 주세요";
     byId("save-button").textContent = editing ? "수정 내용 저장" : "신청서 제출";
-    show("application", editing ? "02 / 신청서 수정" : "02 / 신청서 작성", "name");
+    show("application", "name");
   }
 
   function success(deleted = false) {
@@ -87,7 +84,7 @@ function __greenorange_init() {
     byId("success-detail").textContent = deleted
       ? "저장된 신청 정보가 삭제되었습니다. 다시 참여하려면 처음부터 신청해 주세요."
       : "학번과 비밀번호로 다시 접속하면 신청서를 확인·수정·삭제할 수 있습니다.";
-    show("success", "완료", "success-title");
+    show("success", "success-title");
   }
 
   byId("success-title").tabIndex = -1;
@@ -98,7 +95,7 @@ function __greenorange_init() {
     if (!result) return;
     studentId = requestedId;
     editing = result.exists;
-    if (editing) show("auth", "02 / 비밀번호 확인", "existing-pin");
+    if (editing) show("auth", "existing-pin");
     else application();
   });
 
